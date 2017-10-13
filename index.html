@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,intial-scale=1">
+	<title>mybootstrap</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+    
+</head>
+<body>
+<!-- 导航 -->
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+      	<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navCollapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="" class="navbar-brand">CNWN</a>
+      	</div>
+      	<div class="collapse navbar-collapse" id="navCollapse">
+	 	 	<ul class="nav navbar-nav">
+		  	 	<li role="presentation" ><a href="">主页</a></li>
+		  	 	<li role="presentation" ><a href="">简介</a></li>
+		   		<li role="presentation"><a href="">信息</a></li>
+		   		<li role="presentation"><a href="" class="">联系我们</a></li>
+	   	 	</ul> 
+	   	 			    <!-- 模态框按钮 -->
+   	 		<ul class="nav navbar-nav" style="float: right;">		    
+			    <li><a data-target="#myModal" data-toggle="modal" href="" id="usernames">登陆</a></li>
+				<li><a data-target="#myModal2" data-toggle="modal" href="" id="login">注册</a></li>	
+			</ul>
+   	 	</div>
+   	 			
+    </nav>
+ 
+     	  	<!-- 模态框 -->
+						
+						<div class="modal fade" abindex="" role="dialog" id="myModal">
+						 <div class="modal-dialog">
+						 <div class="modal-content">
+						  <div class="modal-header">
+							<button class="close" data-dismiss="modal">&times;</button>
+							<h3>用户登陆</h3>
+						  </div>
+						  <div class="modal-body">
+						   <form action="">
+							 <div class="row" style="margin:0 auto;">
+					<div class="ipt">
+							<div class="has-feedback input-group col-lg-6 col-md-12 col-sm-12 col-xs-12" style="margin: auto;">
+							  <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+							  <input type="text" class="form-control input-lg" placeholder="请输入用户名/手机号" name="username" id="username">
+							</div>
+					</div>
+							<div class="has-feedback input-group col-lg-6 col-md-12 col-sm-12 col-xs-12 " style="margin: auto;">
+							 <span class="input-group-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
+							  <input type="text" class="form-control input-lg" placeholder="请输入密码" name="userpwd" id="userpwd">
+							</div>
+				<br>
+					<button type="button" class="btn btn-primary btn-xm col-lg-3 col-lg-offset-3 col-md-12 col-sm-12 col-xs-12"
+					id="signIn"  onClick="sendRequest()">登录</button>
+				  <div class="col-lg-3 col-lg-offset-9 col-md-4 col-md-offset-8 col-sm-4 col-sm-offset-9 col-xs-6 col-xs-offset-7">忘记密码?</div>
+				</div>
+						   </form>
+						  </div>
+						 <!--  <div class="modal-footer">
+							<a href="#" class="btn" data-dismiss="modal">close</a>
+							<a href="" class="btn btn-primary">Save changes</a>
+						  </div> -->
+						  </div>
+						 </div>  
+						</div>
+                       <!-- 模态框结束 -->	 
+<script src="js/jquery.js"></script>						
+               <script>
+   function sendRequest(){
+	   var username = document.getElementById(
+	   "username").value;
+	   var userpwd = document.getElementById("userpwd").value;
+	   if(username==""){
+		   alert("用户不能为空。");
+		  return false;   
+	   }
+	   if(userpwd==""){
+		   alert("密码不能为空。");
+		  return false;   
+	   }
+	   var usernames=document.getElementById("usernames");
+	   //创建异步请求对象
+	   var xmlhttp = new XMLHttpRequest();
+	   //打开连接
+	   xmlhttp.open("POST","index.php?username="+username+"&userpwd="+userpwd,true);
+	   xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	   //为状态改变事件绑定处理函数
+	   xmlhttp.onreadystatechange=function(){
+		  if(xmlhttp.readyState==4){
+			 if(xmlhttp.status==200){
+				 //获取服务器返回的数据。
+				usernames.innerHTML=xmlhttp.responseText;
+				$("#login").text("退出登录");
+				
+			 }else{
+				usernames.innerHTML="处理失败。"+xmlhttp.status ;
+			 }
+		  }else{
+			  usernames.innerHTML="正在处理。。。。"
+		  }
+	   }
+	   //发送请求数据到服务器
+	   xmlhttp.send('username=admin&userpwd=123456');
+	  $("#myModal").modal("hide");
+	$("#login").click(function(e) {
+        history.go('index.html');
+    });
+   }
+   function closeModal(){
+	    $("#signIn").click(function(e) {
+        $("#myModal").modal("hide");
+    });
+	   }
+
+</script> 				
+
+<!-- 巨幕 -->
+	<div class="jumbotron">
+	 			<h1 class="">中国智网</h1>
+	 			<p class="">我们致力于研究中国顶尖互联网公司的科技动态、业务水准、前沿技术，并参与政府未来大数据、AI科研工作。</p>
+	</div>
+<!-- 内容 -->
+
+<!-- 1 -->	
+<div class="container content">
+	<div class="row">
+	  <div class="row">
+		<div class="col-lg-14">
+ 			<h4 style="font-weight: bolder;">科技公司展示</h4>
+ 			<hr style="border-color: #0d5588; ">	
+		</div>
+	  </div>
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 " >
+			<a class="thumbnail">
+				<img src="images/qq.jpg" alt="qq" num="0">
+				<div class="caption">
+					<h3 class="">腾讯</h3>
+					<p class="">深圳市腾讯计算机系统有限公司成立于1998年11月  ，由马化腾、张志东、许晨晔、陈一丹、曾李青五位创始人共同创立。  是中国最大的互联网综合服务提供商之一，也是中国服务用户最多的互联网企业之一。<br/><br/><br/></p>
+				</div>
+			</a>
+		</div>
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
+			<a class="thumbnail" >
+				<img src="images/sn.jpg" alt="苏宁" num="1">
+				<div class="caption">
+					<h3 class="">苏宁</h3>
+					<p class="">苏宁创办于1990年12月26日，总部位于南京，是中国商业企业的领先者，经营商品涵盖传统家电、消费电子、百货、日用品、图书、虚拟产品等综合品类，线下实体门店1600多家，线上苏宁易购位居国内B2C前三，线上线下的融合发展引领零售发展新趋势。正品行货、品质服务、便捷购物、舒适体验。</p>
+				</div>
+			</a>
+		</div>
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
+			<a class="thumbnail">
+				<img src="images/jd.jpg" alt="jd" num="2">
+				<div class="caption">
+					<h3 class="">京东</h3>
+					<p class="">京东（股票代码：JD），中国自营式电商企业，创始人刘强东担任京东集团CEO。旗下设有京东商城、京东金融、拍拍网、京东智能、O2O及海外事业部等。2013年正式获得虚拟运营商牌照。2014年5月在美国纳斯达克证券交易所正式挂牌上市。 2016年6月与沃尔玛达成深度战略合作，1号店并入京东。</p>
+				</div>
+			</a>
+		</div>
+	</div>
+<!-- 2 -->		
+	<div class="row">
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 " >
+			<a class="thumbnail">
+				<img src="images/ali.jpg" alt="ali" num="3">
+				<div class="caption">
+					<h3 class="">阿里巴巴</h3>
+					<p class="">阿里巴巴网络技术有限公司（简称：阿里巴巴集团）是以曾担任英语教师的马云为首的18人于1999年在浙江杭州创立，他们相信互联网能够创造公平的竞争环境，让小企业通过创新与科技扩展业务，并在参与国内或全球市场竞争时处于更有利的位置。<br/><br/><br/></p>
+				</div>
+			</a>
+		</div>
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
+			<a class="thumbnail">
+				<img src="images/360.jpg" alt="360" num="4">
+				<div class="caption">
+					<h3 class="">奇虎360</h3>
+					<p class="">360创立于2005年的11月，是中国领先的互联网安全公司，曾先后获得过鼎晖创投、Matrinx及IDG等风险投资商总额高达数千万美元的联合投资。360致力于提供高品质的免费安全服务，是拥有国内大规模、高水平安全技术团队的公司，旗下360安全卫士、360杀毒、360安全浏览器等系列产品深受用户好评，使360成为引人瞩目的网络安全品牌。</p>
+				</div>
+			</a>
+		</div>
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
+			<a class="thumbnail">
+				<img src="images/wph.jpg" alt="wph" num="5">
+				<div class="caption">
+					<h3 class="">唯品会</h3>
+					<p class="">唯品会信息科技有限公司（VIPS）成立于2008年8月，总部设在广州，旗下网站于同年12月8日上线。唯品会主营业务为互联网在线销售品牌折扣商品，涵盖名品服饰鞋包、美妆、母婴、居家等各大品类。2012年3月23日，唯品会在美国纽约证券交易所（NYSE）上市。目前唯品会已成为中国第三大电商<br/><br/></p>
+				</div>
+			</a>
+		</div>
+	</div>
+<!-- 3 -->		
+	<div class="row">
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" >
+			<a class="thumbnail">
+				<img src="images/bd.jpg" alt="百度" class="border" num="6">
+				<div class="caption">
+					<h3 class="">百度</h3>
+					<p class="">百度（纳斯达克：BIDU），全球最大的中文搜索引擎、最大的中文网站。1999年底,身在美国硅谷的李彦宏看到了中国互联网及中文搜索引擎服务的巨大发展潜力，抱着技术改变世界的梦想，他毅然辞掉硅谷的高薪工作，携搜索引擎专利技术，于 2000年1月1日在中关村创建了百度公司。</p>
+				</div>
+			</a>
+		</div>
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+			<a class="thumbnail">
+				<img src="images/xm.jpg" alt="小米"  num="7">
+				<div class="caption">
+					<h3 class="">小米</h3>
+					<p class="">北京小米科技有限责任公司成立2010年4月，是一家专注于智能硬件和电子产品研发的移动互联网公司。“为发烧而生”是小米的产品概念。小米公司首创了用互联网模式开发手机操作系统、发烧友参与开发改进的模式。<br/><br/></p>
+				</div>
+			</a>
+		</div>
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+			<a class="thumbnail">
+				<img src="images/ftx.jpg" alt="" num="8">
+				<div class="caption">
+					<h3 class="">房天下</h3>
+					<p class="">搜房网是全球最大的房地产家居网络平台，一直引领新房、二手房、租房、家居、房地产研究等领域的互联网创新，在PC及移动领域均处于领先的地位。 根据DCCI第三方数据显示，2014年搜房网PC平台用户浏览量和独立访客数始终领先，位居第一。<br/><br/></p>
+				</div>
+			</a>
+		</div>
+	</div>
+<!-- 4 -->		
+	<div class="row"> 
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" >
+			<a class="thumbnail">
+				<img src="images/sh.jpg" alt="qq" num="9">
+				<div class="caption">
+					<h3 class="">搜狐</h3>
+					<p class="">搜狐公司是中国的新媒体、通信及移动增值服务公司，是互联网品牌。搜狐是一个新闻中心、联动娱乐市场，跨界经营的娱乐中心、体育中心、时尚文化中心。搜狐公司是2008北京奥运会互联网内容服务赞助商。</p>
+				</div>
+			</a>
+		</div>
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+			<a class="thumbnail">
+				<img src="images/xc.jpg" alt="" class="border"  num="10">
+				<div class="caption">
+					<h3 class="">携程</h3>
+					<p class="">携程是一个在线票务服务公司，创立于1999年，总部设在中国上海。携程旅行网拥有国内外六十余万家会员酒店可供预订，是中国领先的酒店预订服务中心。<br/><br/><br/></p>
+				</div>
+			</a>
+		</div>
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+			<a class="thumbnail">
+				<img src="images/wy.jpg" alt="" num="11">
+				<div class="caption">
+					<h3 class="">网易</h3>
+					<p class="">网易公司（NASDAQ: NTES）是中国的互联网公司，利用互联网技术，加强人与人之间信息的交流和共享，实现“网聚人的力量”。创始人兼CEO是丁磊。<br/><br/><br/></p>
+				</div>
+			</a>
+		</div>
+	</div>
+	  <footer class="footer ">
+    <div class="container">
+      <div class="row footer-top">
+        <div class="col-sm-6 col-lg-6">
+          <h4>
+            <img src="images/2.jpg">
+          </h4>
+          <p>本网站所列开源项目的中文版文档全部由<a href="http://www.bootcss.com/">中国智网</a>成员翻译整理，并全部遵循 <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>协议发布。</p>
+        </div>
+        <div class="col-sm-6  col-lg-5 col-lg-offset-1">
+          <div class="row about">
+            <div class="col-xs-4">
+              <h4>关于</h4>
+              <ul class="list-unstyled">
+                <li><a href="/about/">关于我们</a></li>
+                <li><a href="/ad/">广告合作</a></li>
+                <li><a href="/links/">友情链接</a></li>
+                <li><a href="/hr/">招聘</a></li>
+              </ul>
+            </div>
+            <div class="col-xs-4">
+              <h4>联系方式</h4>
+              <ul class="list-unstyled">
+                <li><a href="http://weibo.com/bootcss" title="Bootstrap中文网官方微博" target="_blank">新浪微博</a></li>
+                <li><a href="mailto:admin@bootcss.com">电子邮件</a></li>
+              </ul>
+            </div>
+            <div class="col-xs-4">
+              <h4>旗下网站</h4>
+              <ul class="list-unstyled">
+                <li><a href="http://www.golaravel.com/" target="_blank">Laravel中文网</a></li>
+                <li><a href="http://www.ghostchina.com/" target="_blank">Ghost中国</a></li>
+              </ul>
+            </div>
+            <div class="col-xs-4">
+              <h4>赞助商</h4>
+              <ul class="list-unstyled">
+                <li><a href="https://www.upyun.com" target="_blank">又拍云</a></li>
+              </ul>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+      <hr/>
+      <div class="row footer-bottom">
+        <ul class="list-inline text-center">
+          <li><a href="http://www.miibeian.gov.cn/" target="_blank">京ICP备11008151号</a></li><li>京公网安备11010802014853</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/jquery.cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+		$("#myModal").modal("hide")
+</script>
+
+</body>
+</html>

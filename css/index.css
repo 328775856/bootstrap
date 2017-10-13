@@ -1,0 +1,89 @@
+.bgr{
+	background: #f00;
+}
+.bgb{
+	background: #00f;
+}
+body{
+	 	padding-top: 50px;
+	 }
+		.row div{
+			border:0px solid #000;
+		}
+		.jumbotron {
+	position: relative;
+	padding: 40px 0;
+	color: #fff;
+	text-align: center;
+	text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
+	background: #041e3b;
+	background: -webkit-gradient(linear, left bottom, right top, color-stop(0, #041e3b), color-stop(100%, #6d3353));
+	background: -webkit-linear-gradient(15deg, #041e3b 0, #7e3d57 100%);
+	background: -o-linear-gradient(15deg, #041e3b 0, #7e3d57 100%);
+	background: linear-gradient(15deg, #041e3b 0, #7e3d57 100%);
+	-webkit-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+	box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2)
+}
+.jumbotron:after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: url(../images/bs-docs-masthead-pattern.png) repeat center center;
+	opacity: .4;
+}
+li a{
+	padding:auto 85px;
+	margin-left:30px;
+	text-align: center;
+}
+.content{
+}
+/*.container div div {
+ 	border: 0px solid #000;
+ 	margin: 0 50px 0 0;
+}*/
+/*@media only screen and (min-width:768px) {
+	nav{
+	 overflow: hidden;}
+}*/
+.thumbnail img{
+	width: 500px;
+	height:120px;
+}
+.border{
+	border-bottom: 1px #ddd solid;
+}
+
+.row input{
+	border: 1px;
+	border-radius: 0px;
+	height: 50px;
+}
+.row span{
+  	border: 1px;
+  	border-radius: 0px;
+  	width: 20px;
+}
+.thumbnail {
+	height:auto;
+	cursor: pointer;
+}
+.thumbnail h3{
+	text-align: center;
+	color: #337aba;
+	font-weight: bold;
+}
+.thumbnail h3:hover{
+	text-align: center;
+	color: #204a70;
+}
+.thumbnail:hover{
+     text-decoration: none;
+}
+.col-xs-4 a{
+	margin-left: 0px;
+}
